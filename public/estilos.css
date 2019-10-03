@@ -266,7 +266,7 @@
 .imgmis{
     width: 50%;
     height: 20%;
-    margin: 20px 70px;
+    margin: 20px 90px;
 }
 .imgvis{
     width: 30%;
@@ -434,9 +434,6 @@
 .espacio{
     margin: 10px 60px;
 }
-.fondo{
-    background:url(img/puntos_esq_der.png)
-}
 .buzon{
     margin: 10px 10px;
 }
@@ -449,4 +446,48 @@
 }
 .btnflechas{
     color: turquoise;
+}
+.fondo{
+    background-image: url('img/puntos_esq_der.png');
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: right;
+}
+.fondo2{
+    background-image: url('img/gris_bg1.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+.fondo3{
+    background-image: url('img/gris_bg2.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+.fondo4{
+    background-image: url('img/PuntosCentro.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+.fondo5{
+    background-image: url('img/circulos_bg.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+.fondo6{
+    background-image: url('img/puntos_bg.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+.flechaizq{
+    width: 50%;
+    height: auto;
+}
+.flechader{
+    width: 50%;
+    height: auto;
 }
