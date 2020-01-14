@@ -7,6 +7,7 @@
     <title>Energy Training Center</title>
     <link rel="shortcut icon" href="../../ETC/public/img/etc ico.ico" type="image/x-icon">
 </head>
+<!-- <script src="../index.js"></script> -->
 <link rel="stylesheet" href="iconos/style.css">
 <link rel="stylesheet" href="./estilos.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -419,31 +420,35 @@
                             <h4 class="azul3">Buzón de información, quejas y sugerencias</h4>
                             <p>Cualquier duda, sugerencia u opinión que tengas, no dudes en escribirnos.</p>
                         </div>
-                        <form>
-                            <div class="form-row">
-                                <div class="col">
-                                <input type="text" class="form-control" placeholder="Nombre*">
+                        <form name="formulario" id="formulario">
+                                <div class="form-row">
+                                    <div class="col">
+                                    <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre" >
+                                    </div>
+                                    <div class="col">
+                                    <input type="email" class="form-control" placeholder="Email*" id="correo" name="correo">
+                                    </div>
                                 </div>
-                                <div class="col">
-                                <input type="text" class="form-control" placeholder="Email*">
+                            <br>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Teléfono" id="telefono" name="telefono">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Información/Queja/Sugerencia" name="informacion" id="informacion">
+                                    </div>
                                 </div>
-                            </div>
+                                <br>
+                             <textarea class="form-control" id="correo" type="text" placeholder="Mensaje" rows="5" name="mensaje" id="mensaje"></textarea>
+                                <br>
+                                <!-- <input type="button" class="btn btn-primary" onclick="enviar()">Enviar</input> -->
+                                <!-- <button class="btn btn-primary" type="submit" >Enviar mensaje</button>  -->
+                                <button type="submit" id="sendBtn" class="vidBtn" disabled>Enviar</button>
                         </form>
-                        <br>
-                        <form>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Teléfono">
-                                </div>
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Información/Queja/Sugerencia">
-                                </div>
-                            </div>
-                        </form>
-                        <br>
-                        <textarea class="form-control" id="correo" type="text" placeholder="Mensaje" rows="5"></textarea>
-                        <br>
-                        <button class="btn btn-primary">Enviar mensaje</button> 
+                        
+
+
+                        
                     </div>
                     <div class="col-xs-12 sm-7 md-6">
                         <div class="contact">
@@ -475,12 +480,32 @@
                 </div>
             </div>
         </div>
-    </section>
-
-
-
-
-
-   
+    </section>   
 </body>
+<script>
+document.getElementById('formulario').addEventListener('submit', submitForm);
+    function submitForm(e){
+      e.preventDefault();
+      
+      const nombre = document.querySelector('#nombre').value;
+      const email = document.querySelector('#correo').value;
+      const razonSocial = document.querySelector('#informacion').value;
+      const telefono = document.querySelector('#telefono').value;
+      const captcha = document.querySelector('#mensaje').value;
+      
+
+      fetch('/subscribe', {
+        method:'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-type':'application/json'
+        },
+        body:JSON.stringify({nombre:nombre, correo: correo , telefono:telefono, informacion:informacion, mensaje:mensaje})
+      })
+      .then((res) => res.json())
+      .then((data)=>{
+        $('#modalContacto').modal('show')
+      })
+    }
+</script>
 </html>
